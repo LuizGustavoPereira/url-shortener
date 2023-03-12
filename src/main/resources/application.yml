@@ -1,1 +1,12 @@
+spring:
+  application:
+    name: url_shortener
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: create-drop
 
+code-generator:
+  codeLength: 10
+  numbers: false
+  letters: true

@@ -1,4 +1,4 @@
-package com.example.urlshortener.entity;
+package com.example.urlshortener.model.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;
