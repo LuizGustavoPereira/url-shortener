@@ -12,8 +12,8 @@ import java.time.LocalDateTime;
 @Builder
 @Entity
 @AllArgsConstructor
-@Table(name = "ShortenedURL")
-public class ShortenedURL {
+@Table(name = "SHORTENED_URL")
+public class ShortenedUrl {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

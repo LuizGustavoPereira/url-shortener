@@ -1,6 +1,8 @@
 spring:
   application:
     name: url_shortener
+  datasource:
+    url: jdbc:h2:mem:./url-shortener
   jpa:
     show-sql: true
     hibernate:
