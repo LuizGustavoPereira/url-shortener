@@ -18,7 +18,7 @@ import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 @RequestMapping("/url-shortener")
 public class ShortenedUrlController {
     private ShortenedUrlService shortenedURLService;
-    @PostMapping(value = "/create-shorted-url", consumes = APPLICATION_JSON_VALUE, produces = APPLICATION_JSON_VALUE)
+    @PostMapping(consumes = APPLICATION_JSON_VALUE, produces = APPLICATION_JSON_VALUE)
     public ResponseEntity<CreateShortUrlDto> createShortURL(@RequestBody CreateShortUrlRequest createShortUrlRequest) {
         shortenedURLService.createShortURL(createShortUrlRequest);
         return new ResponseEntity<>(HttpStatus.CREATED);
