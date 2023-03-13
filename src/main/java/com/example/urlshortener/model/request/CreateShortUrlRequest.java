@@ -1,14 +1,12 @@
 package com.example.urlshortener.model.request;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NonNull;
-import lombok.Setter;
+import lombok.*;
 
 @Getter
 @Setter
+@Builder
 @AllArgsConstructor
-public class CreateShortURLRequest {
+public class CreateShortUrlRequest {
     @NonNull
     private String targetURL;
     private String shortenedCode;
