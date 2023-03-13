@@ -1,5 +1,6 @@
 package com.example.urlshortener.service;
 
+import com.example.urlshortener.exception.CodeNotFoundException;
 import com.example.urlshortener.exception.InvalidUrlException;
 import com.example.urlshortener.helper.CodeGenerator;
 import com.example.urlshortener.helper.UrlValidator;
@@ -37,5 +38,14 @@ public class ShortenedUrlService {
 
         return entityToDto(shortenedUrl);
 
+    }
+
+    public String findUrlByCode(String code, String remoteAddress) {
+        ShortenedUrl shortenedUrl = shortenedURLRepository.
+                findByShortenedCode(code).orElseThrow(() ->
+                        new CodeNotFoundException("Invalid Code: " + code)
+                );
+        auditEntryService.auditLinkClicked(shortenedUrl, remoteAddress);
+        return shortenedUrl.getTargetURL();
     }
 }

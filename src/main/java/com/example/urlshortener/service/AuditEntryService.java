@@ -1,6 +1,5 @@
 package com.example.urlshortener.service;
 
-import com.example.urlshortener.model.dto.CreateShortUrlDto;
 import com.example.urlshortener.model.entity.AuditEntry;
 import com.example.urlshortener.model.entity.ShortenedUrl;
 import com.example.urlshortener.repository.AuditEntryRepository;
@@ -15,14 +14,17 @@ public class AuditEntryService {
     AuditEntryRepository auditEntryRepository;
 
     public void auditCreateShortenedUrl(ShortenedUrl shortenedUrl) {
-        auditEntryRepository.save(createAuditEntry(shortenedUrl));
+        auditEntryRepository.save(createAuditEntry(shortenedUrl, "New shortened URL created"));
     }
-
-    private AuditEntry createAuditEntry(ShortenedUrl shortenedUrl) {
+    public void auditLinkClicked(ShortenedUrl shortenedUrl, String remoteAddress) {
+        auditEntryRepository.save(createAuditEntry(shortenedUrl, "Link Clicked from remote address: " + remoteAddress));
+    }
+    private AuditEntry createAuditEntry(ShortenedUrl shortenedUrl, String message) {
         return AuditEntry.builder()
                 .creationDate(LocalDateTime.now())
                 .shortenedUrl(shortenedUrl)
-                .text("New shortened URL created")
+                .text(message)
                 .build();
     }
+
 }

@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
 
@@ -12,6 +13,7 @@ import java.time.LocalDateTime;
 @Builder
 @Entity
 @AllArgsConstructor
+@NoArgsConstructor
 @Table(name = "SHORTENED_URL")
 public class ShortenedUrl {
     @Id
